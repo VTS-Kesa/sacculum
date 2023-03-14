@@ -11,6 +11,7 @@
  * @link     https://github.com/VTS-Kesa/sacculum
  */
 use Kesa\Sacculum\Core\Router;
+use Kesa\Sacculum\Core\Response;
 use Kesa\Sacculum\Core\Exception\BaseException;
 use Dotenv\Dotenv;
 
@@ -37,7 +38,7 @@ try
 catch (BaseException $e)
 {
     // Catch and handle BaseException and its descendants
-    echo json_encode(
+    return new Response(
         [
         'status' => 'error',
         'message' => $e->getMessage(),

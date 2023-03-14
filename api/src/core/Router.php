@@ -13,6 +13,7 @@
 namespace Kesa\Sacculum\Core;
 
 use Steampixel\Route;
+use Kesa\Sacculum\Core\Response;
 use Kesa\Sacculum\Core\Exception\NotFoundException;
 
 /**
@@ -42,7 +43,7 @@ class Router
         // Add routes
         Route::add(
             '/', function () {
-                return json_encode(['message' => 'Welcome to the API!']);
+                return new Response(['message' => 'Hello World!']);
             }
         );
     }

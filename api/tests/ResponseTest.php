@@ -1,6 +1,6 @@
 <?php
 /**
- * Exception test.
+ * Response test.
  * php version 8.2
  *
  * @file
@@ -11,10 +11,10 @@
  * @link     https://github.com/VTS-Kesa/sacculum
  */
 use PHPUnit\Framework\TestCase;
-use Kesa\Sacculum\Core\Exception\NotFoundException;
+use Kesa\Sacculum\Core\Response;
 
 /**
- * Exception test.
+ * Response test.
  *
  * @category Test
  * @package  Kesa\Sacculum\Test
@@ -22,16 +22,15 @@ use Kesa\Sacculum\Core\Exception\NotFoundException;
  * @license  Not licensed
  * @link     https://github.com/VTS-Kesa/sacculum
  */
-final class ExceptionTest extends TestCase
+final class ResponseTest extends TestCase
 {
     /**
-     * Test if the constructor is working.
+     * Test if the echo is working.
      *
      * @return void
      */
-    public function testNotFound()
+    public function testResponse()
     {
-        $exception = new NotFoundException('Test');
-        $this->assertEquals(404, $exception->getCode());
+        $this->assertEquals('{"test":"test"}', new Response(['test' => 'test']));
     }
 }
