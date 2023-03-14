@@ -1,4 +1,4 @@
-name: PHPUnit Tests
+name: API Tests
 on:
   push:
     branches-ignore:
@@ -24,8 +24,11 @@ jobs:
       - name: Composer
         run: composer install
 
-      - name: Run tests
+      - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
+
+      - name: Run Behat tests
+        run: ./vendor/bin/behat
 
       - name: Run phpcs
         run: ./vendor/bin/phpcs src/ && ./vendor/bin/phpcs tests/
