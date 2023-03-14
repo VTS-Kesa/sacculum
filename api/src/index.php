@@ -31,18 +31,18 @@ $router = new Router();
 
 try 
 {
-  // Run the router
-  $router->run();
+    // Run the router
+    $router->run();
 }
 catch (BaseException $e)
 {
-  // Catch and handle BaseException and its descendants
-  echo json_encode(
-    [
-      'status' => 'error',
-      'message' => $e->getMessage(),
-      'code' => $e->getCode()
-    ]
-  );
+    // Catch and handle BaseException and its descendants
+    echo json_encode(
+        [
+        'status' => 'error',
+        'message' => $e->getMessage(),
+        'code' => $e->getCode()
+        ]
+    );
 }
 ?>
