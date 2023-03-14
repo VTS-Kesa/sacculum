@@ -38,7 +38,7 @@ try
 catch (BaseException $e)
 {
     // Catch and handle BaseException and its descendants
-    return new Response(
+    echo new Response(
         [
         'status' => 'error',
         'message' => $e->getMessage(),
