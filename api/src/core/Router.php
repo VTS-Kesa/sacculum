@@ -13,6 +13,7 @@
 namespace Kesa\Sacculum\Core;
 
 use Steampixel\Route;
+use Kesa\Sacculum\Core\Exception\NotFoundException;
 
 /**
  * Router for the API.
@@ -32,6 +33,12 @@ class Router
     {
         // Set headers
         header('Content-Type: application/json');
+        // Set 404 handler
+        Route::pathNotFound(
+            function () {
+                throw new NotFoundException();
+            }
+        );
         // Add routes
         Route::add(
             '/', function () {

@@ -11,7 +11,7 @@
  * @link     https://github.com/VTS-Kesa/sacculum
  */
 use PHPUnit\Framework\TestCase;
-use Kesa\Sacculum\Core\Exception\BaseException;
+use Kesa\Sacculum\Core\Exception\NotFoundException;
 
 /**
  * Exception test.
@@ -29,9 +29,9 @@ final class ExceptionTest extends TestCase
      *
      * @return void
      */
-    public function testException()
+    public function testNotFound()
     {
-        $this->expectException(BaseException::class);
-        throw new BaseException('Test', 500);
+        $exception = new NotFoundException('Test');
+        $this->assertEquals(404, $exception->getCode());
     }
 }
