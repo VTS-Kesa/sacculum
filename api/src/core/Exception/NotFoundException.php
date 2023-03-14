@@ -1,6 +1,6 @@
 <?php
 /**
- * Base exception class.
+ * Not Found exception class.
  * php version 8.2
  *
  * @file
@@ -12,8 +12,10 @@
  */
 namespace Kesa\Sacculum\Core\Exception;
 
+use Kesa\Sacculum\Core\Exception\BaseException;
+
 /**
- * Base exception class.
+ * NotFound exception class.
  *
  * @category Core
  * @package  Kesa\Sacculum\Core\Exception
@@ -21,18 +23,16 @@ namespace Kesa\Sacculum\Core\Exception;
  * @license  Not licensed
  * @link     https://github.com/VTS-Kesa/sacculum
  */
-abstract class BaseException extends \Exception
+class NotFoundException extends BaseException
 {
 
     /**
      * Constructor.
      *
-     * @param string $message     Exception message.
-     * @param int    $status_code HTTP status code.
+     * @param string $message Exception message.
      */
-    public function __construct(string $message, int $status_code) 
+    public function __construct(string $message = "Not Found")
     {
-        parent::__construct($message, $status_code);
-        http_response_code($status_code);
+        parent::__construct($message, 404);
     }
 }
