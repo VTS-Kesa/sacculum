@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Kesa\\Sacculum\\": "src/"
+            "Kesa\\Sacculum\\Core\\": ["src/core"]
         }
     },
     "authors": [
@@ -12,5 +12,7 @@
             "name": "Zvonimir Rudinski"
         }
     ],
-    "require": {}
+    "require": {
+        "steampixel/simple-php-router": "^0.7.1"
+    }
 }
