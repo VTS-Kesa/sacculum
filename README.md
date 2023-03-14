@@ -28,4 +28,4 @@ To run the frontend tests, just run `pnpm test`.
 
 To run the API tests, start the API in Docker, install the dependencies and run `docker-compose exec php bash`
 1. `cd /app`
-2. `./vendor/bin/phpunit tests`
+2. `./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/`
