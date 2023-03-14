@@ -26,3 +26,6 @@ jobs:
 
       - name: Run tests
         run: ./vendor/bin/phpunit tests
+
+      - name: Run phpcs
+        run: ./vendor/bin/phpcs src/ && ./vendor/bin/phpcs tests/
