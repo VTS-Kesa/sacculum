@@ -1,9 +1,10 @@
-name: PHPUnit Tests
+name: API Tests
 on:
   push:
     branches-ignore:
       - master
     paths:
+      - '.github/**'
       - 'api/**'
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
       - name: Composer
         run: composer install
 
-      - name: Run tests
+      - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
 
       - name: Run phpcs
