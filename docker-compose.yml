@@ -5,9 +5,9 @@ services:
     image: postgres:14.2-alpine
     container_name: "succulum_db"
     environment:
-      - POSTGRES_USER=succulum
-      - POSTGRES_PASSWORD=succulum
-      - POSTGRES_DB=succulum
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
     ports:
       - "5432:5432"
 
