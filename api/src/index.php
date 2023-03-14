@@ -11,6 +11,7 @@
  * @link     https://github.com/VTS-Kesa/sacculum
  */
 use Kesa\Sacculum\Core\Router;
+use Kesa\Sacculum\Core\Exception\BaseException;
 use Dotenv\Dotenv;
 
 // Load Composer's autoloader
@@ -27,6 +28,21 @@ if ($_ENV['ENVIRONMENT'] !== 'prod') {
     
 // Create a new router
 $router = new Router();
-// Run the router
-$router->run();
+
+try 
+{
+  // Run the router
+  $router->run();
+}
+catch (BaseException $e)
+{
+  // Catch and handle BaseException and its descendants
+  echo json_encode(
+    [
+      'status' => 'error',
+      'message' => $e->getMessage(),
+      'code' => $e->getCode()
+    ]
+  );
+}
 ?>
