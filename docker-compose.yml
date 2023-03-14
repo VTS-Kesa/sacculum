@@ -10,3 +10,13 @@ services:
       - POSTGRES_DB=succulum
     ports:
       - "5432:5432"
+
+  php:
+    image: webdevops/php-apache:8.2-alpine
+    container_name: "succulum_api"
+    environment:
+      WEB_DOCUMENT_ROOT: '/app/src'
+    ports:
+      - "8080:80"
+    volumes:
+      - ./api:/app

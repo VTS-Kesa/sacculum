@@ -1,0 +1,16 @@
+{
+    "name": "kesa/sacculum",
+    "description": "Web Programiranje 2023 - API",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Kesa\\Sacculum\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zvonimir Rudinski"
+        }
+    ],
+    "require": {}
+}

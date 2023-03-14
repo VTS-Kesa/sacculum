@@ -1,0 +1,5 @@
+# Rewrite all requests to index.php where the router is.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
