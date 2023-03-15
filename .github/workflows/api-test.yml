@@ -28,5 +28,10 @@ jobs:
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
 
+      - name: Run Behat tests
+        run: |
+          nohup php -S 0.0.0.0:8080 -t src/ &
+          CI=true ./vendor/bin/behat
+
       - name: Run phpcs
         run: ./vendor/bin/phpcs src/ && ./vendor/bin/phpcs tests/

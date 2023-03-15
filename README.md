@@ -30,5 +30,3 @@ To run the API tests, start the API in Docker, install the dependencies and run 
 1. `cd /app`
 2. `./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/`
 3. `./vendor/bin/behat`
-
-Behat tests aren't currently running in the CI, so be sure to run them before committing anything.

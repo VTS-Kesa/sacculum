@@ -18,9 +18,10 @@ use Dotenv\Dotenv;
 // Load Composer's autoloader
 require_once '../vendor/autoload.php';
 
-// Load environment variables
-Dotenv::createImmutable('../')->load();
-
+if (!getenv('CI')) {
+    // Load environment variables
+    Dotenv::createImmutable('../')->load();
+}
   // Set error reporting
 if ($_ENV['ENVIRONMENT'] !== 'prod') {
     error_reporting(E_ALL);
