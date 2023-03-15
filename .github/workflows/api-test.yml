@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Behat tests
         run: |
-          nohup php -S localhost:8080 -t src/ &
+          nohup php -S 0.0.0.0:8080 -t src/ &
           ./vendor/bin/behat
 
       - name: Run phpcs
