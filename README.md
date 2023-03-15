@@ -17,7 +17,7 @@ To install the API packages run `docker-compose exec php bash`
 1. `cd /app`
 2. `composer install`
 
-Both have exposed ports and you can find the API on `http://localhost:8080`
+Both have exposed ports and you can find the API on `http://localhost:80`
 
 To run the frontend change the directory and run `pnpm i`.
 

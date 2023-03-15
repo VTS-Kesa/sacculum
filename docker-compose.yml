@@ -17,6 +17,6 @@ services:
     environment:
       WEB_DOCUMENT_ROOT: '/app/src'
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./api:/app
