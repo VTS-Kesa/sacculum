@@ -32,7 +32,7 @@ class FeatureContext implements Context
         $client = new Client();
         
         $request_url = "http://localhost";
-        if (isset($_ENV['CI'])) {
+        if (getenv('CI')) {
             $request_url .= ":8080";
         }
         $request_url .= $url;
