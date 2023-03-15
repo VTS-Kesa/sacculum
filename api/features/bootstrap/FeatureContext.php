@@ -30,7 +30,14 @@ class FeatureContext implements Context
     public function iGoTo($url)
     {
         $client = new Client();
-        $response = $client->request('GET', "http://localhost$url", ['http_errors' => false]);
+        
+        $request_url = "http://localhost";
+        if (isset($_ENV['CI'])) {
+            $request_url .= ":8080";
+        }
+        $request_url .= $url;
+
+        $response = $client->request('GET', $request_url, ['http_errors' => false]);
         $this->output = $response->getBody();
     }
 
