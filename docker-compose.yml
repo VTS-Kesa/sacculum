@@ -3,7 +3,7 @@ version: "3.7"
 services:
   db:
     image: postgres:14.2-alpine
-    container_name: "succulum_db"
+    container_name: "sacculum_db"
     environment:
       - POSTGRES_USER=$POSTGRES_USER
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
@@ -13,7 +13,7 @@ services:
 
   php:
     image: webdevops/php-apache:8.2-alpine
-    container_name: "succulum_api"
+    container_name: "sacculum_api"
     environment:
       WEB_DOCUMENT_ROOT: '/app/src'
     ports:
