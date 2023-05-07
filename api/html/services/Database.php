@@ -21,7 +21,7 @@ namespace Kesa\Sacculum\Service;
  * @license  Not licensed
  * @link     https://github.com/VTS-Kesa/sacculum
  */
-static class Database
+class Database
 {
     private static \PDO | null $_instance = null;
 
