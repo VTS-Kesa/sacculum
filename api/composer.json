@@ -5,7 +5,8 @@
     "autoload": {
         "psr-4": {
             "Kesa\\Sacculum\\Core\\": ["src/core"],
-            "Kesa\\Sacculum\\Core\\Exception\\": ["src/core/Exception"]
+            "Kesa\\Sacculum\\Core\\Exception\\": ["src/core/Exception"],
+            "Kesa\\Sacculum\\Service\\": ["src/services"]
         }
     },
     "authors": [
