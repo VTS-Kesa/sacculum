@@ -12,11 +12,11 @@ services:
       - "5432:5432"
 
   php:
-    image: webdevops/php-apache:8.2-alpine
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     container_name: "sacculum_api"
-    environment:
-      WEB_DOCUMENT_ROOT: '/app/src'
     ports:
       - "8080:80"
     volumes:
-      - ./api:/app
+      - ./api:/var/www/

@@ -43,7 +43,7 @@ class Router
         // Add routes
         Route::add(
             '/', function () {
-                return new Response(['message' => 'Hello World!']);
+                return new Response(['message' => 'Hello API!']);
             }
         );
     }

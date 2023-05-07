@@ -4,9 +4,9 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Kesa\\Sacculum\\Core\\": ["src/core"],
-            "Kesa\\Sacculum\\Core\\Exception\\": ["src/core/Exception"],
-            "Kesa\\Sacculum\\Service\\": ["src/services"]
+            "Kesa\\Sacculum\\Core\\": ["html/core"],
+            "Kesa\\Sacculum\\Core\\Exception\\": ["html/core/Exception"],
+            "Kesa\\Sacculum\\Service\\": ["html/services"]
         }
     },
     "authors": [
