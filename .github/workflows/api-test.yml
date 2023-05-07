@@ -34,4 +34,4 @@ jobs:
           CI=true ./vendor/bin/behat
 
       - name: Run phpcs
-        run: ./vendor/bin/phpcs src/ && ./vendor/bin/phpcs tests/
+        run: ./vendor/bin/phpcs html/ && ./vendor/bin/phpcs tests/
