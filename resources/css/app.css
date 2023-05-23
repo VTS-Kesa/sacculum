@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+input {
+    color: black;
+}
+
+.invalid-feedback {
+    color: red;
+    display: block;
+    margin-top: 1rem;
+}
