@@ -37,6 +37,14 @@
             </div>
         </header>
 
+        <!-- Render the message if there is one -->
+        @if(session('message'))
+            <div class="container mx-auto px-4 py-6">
+                <div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
+                    {{ session('message') }}
+                </div>
+            </div>
+        @endif
 
         <main class="py-4 text-white">
             @yield('content')
