@@ -35,6 +35,13 @@ Route::group(['middleware' => 'verified'], function () {
         Route::post('/', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
         Route::post('/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.password');
     });
+    // Category routes
+    Route::group(['prefix' => 'categories', 'middleware' => 'admin'], function () {
+        Route::get('/', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories');
+        Route::post('/', [App\Http\Controllers\CategoryController::class, 'create'])->name('categories.create');
+        Route::post('/{slug}', [App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
+        Route::get('/{slug}', [App\Http\Controllers\CategoryController::class, 'delete'])->name('categories.delete');
+    });
 });
 
 // Other routes
