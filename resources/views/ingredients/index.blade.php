@@ -5,7 +5,7 @@
     <h2 class="text-3xl mb-3">Ingredients</h2>
 
     @foreach($ingredients as $ingredient)
-        <div class="mb-3 flex items-center gap-3">
+        <div class="mb-3 flex items-center gap-3 flex-wrap">
             <form method="POST" action="{{ route('ingredients.update', $ingredient->id) }}" class="flex items-center gap-3">
                 @csrf
                 <div class="row mb-3">
