@@ -18,7 +18,7 @@ class AdminRole
     {
         $user = Auth::user();
 
-        if ($user->role->name !== 'admin') {
+        if ($user->role->slug !== 'admin') {
             // TODO: Change this to a 403 page render
             return response()->json([
                 'message' => 'You are not authorized to access this resource',
