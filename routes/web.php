@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+// Landing page
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,30 +21,21 @@ Route::get('/', function () {
 Auth::routes();
 
 // Email verification
-Route::get('/email/verify', function () {
-    Session::flash('message', 'E-mail verification sent!');
+Route::group(['middleware' => 'auth', 'prefix' => 'email'], function () {
+    Route::get('/verify', [App\Http\Controllers\EmailVerificationController::class, 'sendVerification'])->name('verification.notice');
+    Route::get('/verify/{id}/{hash}', [App\Http\Controllers\EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+    Route::post('/verification-notification', [App\Http\Controllers\EmailVerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
+});
 
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
-
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect()->route('login');
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-// Profile routes
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('verified');
-
-Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update')->middleware('verified');
-
-Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.password')->middleware('verified');
+// Verified routes
+Route::group(['middleware' => 'verified'], function () {
+    // Profile routes
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+        Route::post('/', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.password');
+    });
+});
 
 // Other routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
