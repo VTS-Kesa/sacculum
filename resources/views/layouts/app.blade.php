@@ -17,15 +17,20 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-800">
-        <header class="bg-gray-900 flex justify-between items-center">
-            <div class="container mx-auto px-4 py-6">
+        <header class="bg-gray-900 flex justify-between items-center flex-col md:flex-row">
+            <div class="container mx-auto px-4 pb-0 py-6 md:pb-6">
                 <a href="/">
-                    <h1 class="text-2xl md:text-4xl font-bold text-white">Sacculum</h1>
+                    <h1 class="text-4xl font-bold text-white">Sacculum</h1>
                 </a>
             </div>
-            <div class="container mx-auto px-4 py-6 text-right flex justify-end gap-3">
+            <div class="container mx-auto px-4 py-6 text-left md:text-right flex flex-col justify-end gap-3 md:flex-row">
                 @auth
-                    <a href="{{ route('home') }}" class="text-white">Dashboard</a>
+                    <a href="{{ route('profile') }}" class="text-white">Profile</a>
+                    @if (auth()->user()->role->slug === 'admin')
+                        <a href="{{ route('profile') }}" class="text-white">Categories</a>
+                        <a href="{{ route('profile') }}" class="text-white">Ingredients</a>
+                    @endif
+                    <a href="{{ route('profile') }}" class="text-white">Recipes</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
