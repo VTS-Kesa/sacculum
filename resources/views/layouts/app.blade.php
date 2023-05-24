@@ -27,6 +27,7 @@
                 @auth
                     <a href="{{ route('profile') }}" class="text-white">Profile</a>
                     @if (auth()->user()->role->slug === 'admin')
+                        <a href="{{ route('users') }}" class="text-white">Users</a>
                         <a href="{{ route('categories') }}" class="text-white">Categories</a>
                         <a href="{{ route('ingredients') }}" class="text-white">Ingredients</a>
                     @endif

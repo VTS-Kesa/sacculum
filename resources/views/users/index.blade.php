@@ -10,12 +10,12 @@
             @if ($user->banned)
                 <form action="{{ route('users.unban', $user->id) }}" method="POST">
                     @csrf
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3">Unban</button>
+                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-3">Unban</button>
                 </form>
             @else
                 <form action="{{ route('users.ban', $user->id) }}" method="POST">
                     @csrf
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3">Ban</button>
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-3">Ban</button>
                 </form>
             @endif
         </div>
