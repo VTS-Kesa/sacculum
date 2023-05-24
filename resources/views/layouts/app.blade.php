@@ -28,7 +28,7 @@
                     <a href="{{ route('profile') }}" class="text-white">Profile</a>
                     @if (auth()->user()->role->slug === 'admin')
                         <a href="{{ route('categories') }}" class="text-white">Categories</a>
-                        <a href="{{ route('profile') }}" class="text-white">Ingredients</a>
+                        <a href="{{ route('ingredients') }}" class="text-white">Ingredients</a>
                     @endif
                     <a href="{{ route('profile') }}" class="text-white">Recipes</a>
                     <form method="POST" action="{{ route('logout') }}">

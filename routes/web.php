@@ -42,6 +42,13 @@ Route::group(['middleware' => 'verified'], function () {
         Route::post('/{slug}', [App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
         Route::get('/{slug}', [App\Http\Controllers\CategoryController::class, 'delete'])->name('categories.delete');
     });
+    // Ingredient routes
+    Route::group(['prefix' => 'ingredients', 'middleware' => 'admin'], function () {
+        Route::get('/', [App\Http\Controllers\IngredientsController::class, 'index'])->name('ingredients');
+        Route::post('/', [App\Http\Controllers\IngredientsController::class, 'create'])->name('ingredients.create');
+        Route::post('/{id}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredients.update');
+        Route::get('/{id}', [App\Http\Controllers\IngredientsController::class, 'delete'])->name('ingredients.delete');
+    });
 });
 
 // Other routes
