@@ -50,6 +50,14 @@
                 </div>
             </div>
         @endif
+        <!-- Render the error if there are any -->
+        @if(session('error'))
+            <div class="container mx-auto px-4 py-6">
+                <div class="bg-red-500 p-4 rounded-lg text-white text-center">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
 
         <main class="py-4 text-white">
             @yield('content')

@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'email'], function () {
 });
 
 // Verified routes
-Route::group(['middleware' => 'verified'], function () {
+Route::group(['middleware' => ['verified', 'not.banned']], function () {
     // Profile routes
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
@@ -48,6 +48,12 @@ Route::group(['middleware' => 'verified'], function () {
         Route::post('/', [App\Http\Controllers\IngredientsController::class, 'create'])->name('ingredients.create');
         Route::post('/{id}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredients.update');
         Route::get('/{id}', [App\Http\Controllers\IngredientsController::class, 'delete'])->name('ingredients.delete');
+    });
+    // Users routes
+    Route::group(['prefix' => 'users', 'middleware' => 'admin'], function () {
+        Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+        Route::post('/ban/{id}', [App\Http\Controllers\UserController::class, 'ban'])->name('users.ban');
+        Route::post('/unban/{id}', [App\Http\Controllers\UserController::class, 'unban'])->name('users.unban');
     });
 });
 
