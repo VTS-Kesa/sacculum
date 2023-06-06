@@ -20,7 +20,7 @@ class IngredientsController extends Controller
             'name' => 'required|unique:ingredients|max:64',
         ]);
 
-        $ingredient = Ingredient::create([
+        Ingredient::create([
             'name' => $request->name,
         ]);
 

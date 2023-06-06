@@ -20,4 +20,9 @@ class Recipe extends Model
     {
         return $this->belongsToMany(Ingredient::class, 'recipe_ingredient', 'recipe_id', 'ingredient_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

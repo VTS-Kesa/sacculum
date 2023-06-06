@@ -31,7 +31,7 @@
                         <a href="{{ route('categories') }}" class="text-white">Categories</a>
                         <a href="{{ route('ingredients') }}" class="text-white">Ingredients</a>
                     @endif
-                    <a href="{{ route('profile') }}" class="text-white">Recipes</a>
+                    <a href="{{ route('recipes') }}" class="text-white">Recipes</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>

@@ -56,6 +56,22 @@ Route::group(['middleware' => ['verified', 'not.banned']], function () {
         Route::post('/unban/{id}', [App\Http\Controllers\UserController::class, 'unban'])->name('users.unban');
     });
 });
+// Recipe routes
+Route::group(['prefix' => 'recipes'], function () {
+    Route::get('/', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipes');
+    Route::get('/{slug}', [App\Http\Controllers\RecipeController::class, 'show'])->name('recipes.show');
+
+    Route::group(['middleware' => ['verified', 'not.banned']], function () {
+        Route::post('/', [App\Http\Controllers\RecipeController::class, 'create'])->name('recipes.create');
+        Route::post('/{slug}', [App\Http\Controllers\RecipeController::class, 'update'])->name('recipes.update');
+        Route::get('/{slug}/delete', [App\Http\Controllers\RecipeController::class, 'delete'])->name('recipes.delete');
+    });
+
+    Route::group(['middleware' => 'admin'], function () {
+        Route::post('/approve/{id}', [App\Http\Controllers\RecipeController::class, 'approve'])->name('recipes.approve');
+        Route::post('/disapprove/{id}', [App\Http\Controllers\RecipeController::class, 'disapprove'])->name('recipes.disapprove');
+    });
+});
 
 // Other routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
